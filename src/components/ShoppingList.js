@@ -12,13 +12,20 @@ function ShoppingList({ items }) {
   }
 
   function handleSearchChange(event) {
-    setSearchString(event.target.value.toLowerCase());
+    setSearchString(event.target.value);
   }
 
   const itemsToDisplay = items.filter((item) => {
     if (selectedCategory === "All" && !searchString) return true;
-
-    return item.category === selectedCategory && item.name.toLowerCase().includes(searchString);
+    return (
+      (
+        (item.category === selectedCategory) ||
+        (selectedCategory === "All")
+      ) &&
+      (
+        item.name.toLowerCase().includes(searchString.toLowerCase())
+      )
+    );
   });
 
   return (
