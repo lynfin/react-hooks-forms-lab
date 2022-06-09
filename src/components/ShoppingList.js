@@ -12,13 +12,13 @@ function ShoppingList({ items }) {
   }
 
   function handleSearchChange(event) {
-    setSearchString(event.target.value);
+    setSearchString(event.target.value.toLowerCase());
   }
 
   const itemsToDisplay = items.filter((item) => {
-    if (selectedCategory === "All") return true;
+    if (selectedCategory === "All" && !searchString) return true;
 
-    return item.category === selectedCategory;
+    return item.category === selectedCategory && item.name.toLowerCase().includes(searchString);
   });
 
   return (
