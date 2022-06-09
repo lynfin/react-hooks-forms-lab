@@ -7,9 +7,9 @@ import itemData from "../data/items";
 Component Hierarchy (stateVars) (=>stateVar passed in as prop) (<=callback acts on stateVar)
   App (items, isDarkMode)
   ├───Header (=>isDarkMode, <=onDarkModeClick)
-  └───ShoppingList (selectedCategory, filterString) (=>items)
+  └───ShoppingList (selectedCategory, searchString) (=>items)
       ├───ItemForm
-      ├───Filter (<=onCategoryChange)
+      ├───Filter (<=onCategoryChange, <=onSearchChange)
       └───Items
           ├───Item (isInCart) (=>items[0])
           ├───Item (isInCart) (=>items[1])
