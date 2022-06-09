@@ -7,8 +7,8 @@ import itemData from "../data/items";
 Component Hierarchy (stateVars) (=>stateVar passed in as prop) (<=callback acts on stateVar)
   App (items, isDarkMode)
   ├───Header (=>isDarkMode, <=onDarkModeClick)
-  └───ShoppingList (selectedCategory, searchString) (=>items)
-      ├───ItemForm
+  └───ShoppingList (selectedCategory, searchString) (=>items) (<=onItemFormSubmit)
+      ├───ItemForm (<=onItemFormSubmit)
       ├───Filter (=>searchString)(<=onCategoryChange, <=onSearchChange)
       └───Items
           ├───Item (isInCart) (=>items[0])
@@ -25,10 +25,14 @@ function App() {
     setIsDarkMode((isDarkMode) => !isDarkMode);
   }
 
+  function handleItemFormSubmit(newItem) {
+    setItems([...items,newItem])
+  }
+
   return (
     <div className={"App " + (isDarkMode ? "dark" : "light")}>
       <Header isDarkMode={isDarkMode} onDarkModeClick={handleDarkModeClick} />
-      <ShoppingList items={items} />
+      <ShoppingList items={items} onItemFormSubmit={handleItemFormSubmit}/>
     </div>
   );
 }
