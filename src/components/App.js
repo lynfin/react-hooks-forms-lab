@@ -9,7 +9,7 @@ Component Hierarchy (stateVars) (=>stateVar passed in as prop) (<=callback acts 
   ├───Header (=>isDarkMode, <=onDarkModeClick)
   └───ShoppingList (selectedCategory, searchString) (=>items)
       ├───ItemForm
-      ├───Filter (<=onCategoryChange, <=onSearchChange)
+      ├───Filter (=>searchString)(<=onCategoryChange, <=onSearchChange)
       └───Items
           ├───Item (isInCart) (=>items[0])
           ├───Item (isInCart) (=>items[1])
