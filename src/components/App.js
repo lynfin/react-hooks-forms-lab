@@ -3,6 +3,20 @@ import ShoppingList from "./ShoppingList";
 import Header from "./Header";
 import itemData from "../data/items";
 
+/*
+Component Hierarchy (stateVars) (=>stateVar passed in as prop) (<=callback acts on stateVar)
+  App (items, isDarkMode)
+  ├───Header (=>isDarkMode, <=onDarkModeClick)
+  └───ShoppingList (selectedCategory) (=>items)
+      ├───ItemForm
+      ├───Filter (<=onCategoryChange)
+      └───Items
+          ├───Item (isInCart) (=>items[0])
+          ├───Item (isInCart) (=>items[1])
+          └───Item (isInCart) (=>items[2])
+  
+*/
+
 function App() {
   const [items, setItems] = useState(itemData);
   const [isDarkMode, setIsDarkMode] = useState(false);
